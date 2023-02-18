@@ -1,8 +1,8 @@
-const urlParams = location.search
-const urlSearchParams = new URLSearchParams(urlParams) // Création de l'url produit
-const kanapId = urlSearchParams.get("id") // Création de la constante qui récupère les id du DOM
+const urlParams = location.search //Recherche de l'information dans l'url - search chaine de caractère fin de l'url
+const urlSearchParams = new URLSearchParams(urlParams) // chaine de caractère que l'on souhaite manipuler
+const kanapId = urlSearchParams.get("id") // Création de la constante qui récupère l'id de l'URL
 fetch("http://localhost:3000/api/products/" + kanapId)  // Appel de l'API
-    .then(function (response) { //Récupération des éléments "id" depuis le fichier JSON
+    .then(function (response) { //Appel de la chaine de caractère fichier JSON
         return response.json()
 
     })
@@ -38,7 +38,7 @@ fetch("http://localhost:3000/api/products/" + kanapId)  // Appel de l'API
                 const _id = result._id 
                 const quantity = parseInt(document.getElementById("quantity").value)// Création de deux constantes quantity (nbr entier) et pour la couleur
                 const color = colorContainer.value
-                if (!color.value || !(quantity <= 100 && quantity > 0)) { // Condition : couleur présente et quantité entre 0 et 100 sinon message erreur
+                if (!color || !(quantity <= 100 && quantity > 0)) { // Condition : couleur présente et quantité entre 0 et 100 sinon message erreur
                     alert("Vous devez sélectionner une couleur et une quantité valide (1-100)")
                     return
                 }

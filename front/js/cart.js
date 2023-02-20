@@ -1,10 +1,13 @@
-const sectionCart = document.querySelector("#cart__items"); // Rattachement des balises au DOM
-const totalQuantityElt = document.getElementById("totalQuantity");
+const sectionCart = document.querySelector("#cart__items"); // Appel de la balise section cart_items ous sera stockée la carte
+const totalQuantityElt = document.getElementById("totalQuantity"); // Appel de la balise
+
 const totalPriceElt = document.getElementById("totalPrice");
 let totalQuantity = 0;
 let totalPrice = 0;
 let basket;
 let basketWithInfos;
+
+
 function run (){
     
     const storedBasket = localStorage.getItem("nadia_p5_kanap");
@@ -21,8 +24,8 @@ function run (){
 
 function getOneKanap (kanap){
     return new Promise ((resolve)=> {
-        fetch("http://localhost:3000/api/products/" + kanap._id)  // Appel de l'API
-    .then(function (response) { //Récupération des éléments "id" depuis le fichier JSON
+        fetch("http://localhost:3000/api/products/" + kanap._id)  // 
+    .then(function (response) { 
         return response.json()
 
     })
@@ -40,6 +43,7 @@ function getOneKanap (kanap){
     })
     })
 }
+console.log(result)
 function getAllKanaps (){
    
     const promises = [];

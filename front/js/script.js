@@ -1,24 +1,22 @@
-const itemsSection = document.getElementById("items") //Récupération de l'élément du DOM qui accueillera les "items" de chaque canapé dans une constante itemsSection
-fetch("http://localhost:3000/api/products") //Appel de l'API en ligne 
-    .then(function (response) { //Récupération des "items" depuis le fichier JSON
-        return response.json()
-
+const itemsSection = document.getElementById("items") //Constante itemdSection : Récupération de l'élément du DOM "items" qui accueillera les articles disponible à la vente
+fetch("http://localhost:3000/api/products") // URL du service à interroger
+    .then(function (response) { //Renvoie d'un résultat - Fonction de rappel response
+        return response.json() // Extraire les données JSON de ma requête
+      
     })
-    .then(function (result) {  // Fonction result pour l'ajout des différents "items"
-        let htmlString = "" // Création d'une variable - chaine de caractère - qui accueillera les "items"
-        for (let i = 0; i < result.length; i++) { // Boucle for pour l'ajout des tout les "items"
-            const kanap = result[i] // Création de la constante kanap qui contient tous les items
-
-            // Ajout des balises des "items" dans la variable chaine de caractère htmlString
+    .then(function (result) {  //Envoie des ces données dans la function "result"
+        let htmlString = "" // Création d'une variable - qui accueillera les objets Kanap
+        for (let i = 0; i < result.length; i++) { // Boucle for pour l'ajout des objets kanap
+            const kanap = result[i] // Création de la constante kanap égal aux résultats des requêtes pour chacun des objets 
+            // Ajout des balises des objets dans la variable chaine de caractère htmlString
             htmlString += `<a href="./product.html?id=${kanap._id}"> 
     <article>
-      <img src="${kanap.imageUrl}" alt="${kanap.altTxt}">
+      <img src="${kanap.imageUrl}" alt="${kanap.altTxt}"> 
       <h3 class="productName">${kanap.name}</h3>
       <p class="productDescription">${kanap.description}Dis enim malesuada risus sapien gravida nulla nisl arcu. Dis enim malesuada risus sapien gravida nulla nisl arcu.</p>
     </article>
     </a>`
         }
-      
         itemsSection.innerHTML = htmlString // Générer la page web avec les différents canapés
     })
 

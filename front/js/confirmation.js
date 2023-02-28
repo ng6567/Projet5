@@ -1,0 +1,2 @@
+const orderId = new URLSearchParams (location.search).get("orderId"); // URL que l'on souhaite manipuler à l'order id
+document.getElementById("orderId").innerText = orderId// Création de la strucutre html qui accueillera les données d'order id

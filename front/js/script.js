@@ -1,9 +1,3 @@
-
-
-   
-     
-      
-
     function displayProducts (result) { // et ensute le résultat sera utilisé dans la déclaration de la fonction qui s'executera pour structurer la liste de produits
       const itemsSection = document.getElementById("items") //Déclaration de la variable utilisées pour l'ensemble des produits 
       let htmlString = "" 

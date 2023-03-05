@@ -2,7 +2,7 @@ const urlParams = location.search // constante de la chaine de l'url que l'on va
 
 const urlSearchParams = new URLSearchParams(urlParams) // chaine de caractère que l'on souhaite manipuler
 const kanapId = urlSearchParams.get("id") // puis id indiqué en paramètre
-function displayProduct(result){
+function displayProduct(result){ // Fonction qui recevra les données de la précédente promesse pour structure le contenu de la page
     const imageContainer = document.getElementsByClassName("item__img")[0] // Création et ajout de l'image
         const img = document.createElement("img") 
         img.src = result.imageUrl
@@ -77,7 +77,7 @@ function fetchProduct(){
         
 
     })
-    .then(displayProduct)
+    .then(displayProduct) // Récupération des éléments pour exectution de la fonction
     
 }
 fetchProduct()

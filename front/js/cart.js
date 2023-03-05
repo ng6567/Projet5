@@ -59,9 +59,9 @@ Promise.all (promises).then ((kanaps) => { // Lorsque les "promises" sont résol
     basketWithInfos = kanaps; // Remplissage des objets kanap contenu dans le tableau kanaps dans le panier en prenant compte de la quantité et du prix
     for(let i = 0; i < kanaps.length; i++){ // boucle qui permet d'incrémenter tous les objets de la const Kanap dans un tableau kanaps
         const kanap = kanaps [i]; 
-        createKanapElement(kanap);
-        totalQuantity += kanap.quantity; // Quantité totale de produits
-        totalPrice += kanap.quantity * kanap.price; // Prix total de produits
+        createKanapElement(kanap); // Récupération dans la fonction de chaque élément produit
+        totalQuantity += kanap.quantity; // Calcul quantité totale de produits
+        totalPrice += kanap.quantity * kanap.price; // Calcul prix total de produits
     }
     totalPriceElt.innerText = totalPrice; // Afficher le prix total
     totalQuantityElt.innerHTML = totalQuantity; // Afficher la quantité total
@@ -72,7 +72,7 @@ Promise.all (promises).then ((kanaps) => { // Lorsque les "promises" sont résol
 
 
 function createKanapElement (kanap) { // Déclaration de la fonction qui executera l'addition ou suppression des éléments dans basket et storedBasket de la carte
-    //// Création de la structure html qui accueillera les données de la carte- Récupération des paramètres des produits
+    // Création de la structure html qui accueillera les données de la carte- Récupération des paramètres des produits
     const article = document.createElement("article") 
     article.className = "cart__item"
     article.dataset.id = kanap._id

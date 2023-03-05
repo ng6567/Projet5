@@ -1,9 +1,9 @@
-    function displayProducts (result) { // et ensute le résultat sera utilisé dans la déclaration de la fonction qui s'executera pour structurer la liste de produits
-      const itemsSection = document.getElementById("items") //Déclaration de la variable utilisées pour l'ensemble des produits 
-      let htmlString = "" 
+    function displayProducts (result) { // Déclaration de la fonction qui récupère le résultat de la promise qui s'executera pour structurer et afficher la liste de produits
+      const itemsSection = document.getElementById("items") //Méthode qui renvoie l'élément html id = items stocké dans la variables
+      let htmlString = "" // Déclaration de la variable qui stockera l'ensemble des produits
       for (let i = 0; i < result.length; i++) { // Création d'une boucle pour itérer les produits disponibles
           const kanap = result[i] 
-         // Création de la structure html qui accueillera les données de la page d'accueil - Récupération des paramètres des produits
+         // Création de la structure html qui accueillera les données de la page d'accueil - Récupération des paramètres des produits dans la variable
           htmlString += `<a href="./product.html?id=${kanap._id}"> 
   <article>
     <img src="${kanap.imageUrl}" alt="${kanap.altTxt}"> 
@@ -16,13 +16,13 @@
   }
     
 
-    function fetchProducts (){
+    function fetchProducts (){ // Déclaration de la fonction qui executera la méthode fetch
       fetch("http://localhost:3000/api/products") // On appelle la méthode fetch avec URL de notre API
     .then(function (response) { // Fetch renvoie une promise, à la réponse de l'API execution du then
         return response.json() // Récupérer la réponse en json
       
     })
-    .then(displayProducts)
+    .then(displayProducts) //  Avec les éléments de réponse envoyée on execute la fonction displayProducts
     }
     
     fetchProducts()
